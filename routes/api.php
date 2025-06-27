@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\SaleController;
+use App\Http\Controllers\Api\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,12 @@ Route::apiResource('suppliers', SupplierController::class);
 
 // API Routes untuk Product
 Route::apiResource('products', ProductController::class);
+
+// API Routes untuk Sales (Penjualan)
+Route::apiResource('sales', SaleController::class);
+
+// API Routes untuk Purchases (Pembelian)
+Route::apiResource('purchases', PurchaseController::class);
 
 // Additional route untuk mendapatkan produk berdasarkan supplier
 Route::get('suppliers/{supplier}/products', [ProductController::class, 'getBySupplier']); 
