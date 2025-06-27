@@ -1,0 +1,793 @@
+{
+	"info": {
+		"_postman_id": "12345678-1234-1234-1234-123456789012",
+		"name": "TR PBP - Sistem Informasi Distributor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Suppliers",
+			"item": [
+				{
+					"name": "Get All Suppliers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/suppliers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"suppliers"
+							]
+						},
+						"description": "Retrieve all suppliers with their products"
+					}
+				},
+				{
+					"name": "Get Supplier by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/suppliers/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"suppliers",
+								"1"
+							]
+						},
+						"description": "Get specific supplier details by ID"
+					}
+				},
+				{
+					"name": "Create New Supplier",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama\": \"PT Supplier Baru\",\n    \"alamat\": \"Jl. Contoh No. 123, Jakarta\",\n    \"nomor_telepon\": \"021-1234567\",\n    \"email\": \"supplier.baru@email.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/suppliers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"suppliers"
+							]
+						},
+						"description": "Create a new supplier"
+					}
+				},
+				{
+					"name": "Update Supplier",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama\": \"PT Supplier Updated\",\n    \"alamat\": \"Jl. Updated No. 456, Jakarta\",\n    \"nomor_telepon\": \"021-7654321\",\n    \"email\": \"supplier.updated@email.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/suppliers/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"suppliers",
+								"1"
+							]
+						},
+						"description": "Update existing supplier"
+					}
+				},
+				{
+					"name": "Delete Supplier",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/suppliers/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"suppliers",
+								"1"
+							]
+						},
+						"description": "Delete supplier (only if no products associated)"
+					}
+				},
+				{
+					"name": "Get Products by Supplier",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/suppliers/1/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"suppliers",
+								"1",
+								"products"
+							]
+						},
+						"description": "Get all products from specific supplier"
+					}
+				}
+			],
+			"description": "Supplier management endpoints"
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						},
+						"description": "Retrieve all products with supplier information"
+					}
+				},
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						},
+						"description": "Get specific product details by ID"
+					}
+				},
+				{
+					"name": "Create New Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama\": \"Produk Baru Test\",\n    \"stok\": 100,\n    \"satuan\": \"dus\",\n    \"supplier_id\": 1,\n    \"harga_beli\": 50000,\n    \"harga_jual\": 60000\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						},
+						"description": "Create a new product (harga_jual must be > harga_beli)"
+					}
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama\": \"Produk Updated\",\n    \"stok\": 150,\n    \"satuan\": \"karton\",\n    \"supplier_id\": 1,\n    \"harga_beli\": 55000,\n    \"harga_jual\": 65000\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						},
+						"description": "Update existing product"
+					}
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						},
+						"description": "Delete product"
+					}
+				}
+			],
+			"description": "Product management endpoints"
+		},
+		{
+			"name": "Sales (Penjualan)",
+			"item": [
+				{
+					"name": "Get All Sales",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/sales",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"sales"
+							]
+						},
+						"description": "Retrieve all sales transactions with items"
+					}
+				},
+				{
+					"name": "Get Sale by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/sales/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"sales",
+								"1"
+							]
+						},
+						"description": "Get specific sale transaction details"
+					}
+				},
+				{
+					"name": "Create New Sale (Single Item)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_name\": \"Toko Single Item\",\n    \"sale_date\": \"2025-06-28\",\n    \"items\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 5,\n            \"unit_price\": 95000\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/sales",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"sales"
+							]
+						},
+						"description": "Create sale transaction with single item (will reduce stock automatically)"
+					}
+				},
+				{
+					"name": "Create New Sale (Multi Items)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_name\": \"Toko Multi Items\",\n    \"sale_date\": \"2025-06-28\",\n    \"items\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 10,\n            \"unit_price\": 95000\n        },\n        {\n            \"product_id\": 2,\n            \"quantity\": 8,\n            \"unit_price\": 52000\n        },\n        {\n            \"product_id\": 5,\n            \"quantity\": 3,\n            \"unit_price\": 390000\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/sales",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"sales"
+							]
+						},
+						"description": "Create sale transaction with multiple items (will reduce stock automatically)"
+					}
+				},
+				{
+					"name": "Update Sale",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_name\": \"Toko Updated\",\n    \"sale_date\": \"2025-06-29\",\n    \"items\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 15,\n            \"unit_price\": 95000\n        },\n        {\n            \"product_id\": 3,\n            \"quantity\": 5,\n            \"unit_price\": 135000\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/sales/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"sales",
+								"1"
+							]
+						},
+						"description": "Update sale transaction (will restore old stock and reduce new stock)"
+					}
+				},
+				{
+					"name": "Delete Sale",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/sales/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"sales",
+								"1"
+							]
+						},
+						"description": "Delete sale transaction (will restore stock automatically)"
+					}
+				}
+			],
+			"description": "Sales transaction endpoints - automatically manages stock reduction"
+		},
+		{
+			"name": "Purchases (Pembelian)",
+			"item": [
+				{
+					"name": "Get All Purchases",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/purchases",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"purchases"
+							]
+						},
+						"description": "Retrieve all purchase transactions with items"
+					}
+				},
+				{
+					"name": "Get Purchase by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/purchases/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"purchases",
+								"1"
+							]
+						},
+						"description": "Get specific purchase transaction details"
+					}
+				},
+				{
+					"name": "Create New Purchase (Single Item)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"supplier_id\": 1,\n    \"purchase_date\": \"2025-06-28\",\n    \"items\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 50,\n            \"unit_price\": 85000\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/purchases",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"purchases"
+							]
+						},
+						"description": "Create purchase transaction with single item (will increase stock automatically)"
+					}
+				},
+				{
+					"name": "Create New Purchase (Multi Items)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"supplier_id\": 1,\n    \"purchase_date\": \"2025-06-28\",\n    \"items\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 100,\n            \"unit_price\": 85000\n        },\n        {\n            \"product_id\": 2,\n            \"quantity\": 75,\n            \"unit_price\": 45000\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/purchases",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"purchases"
+							]
+						},
+						"description": "Create purchase transaction with multiple items from same supplier (will increase stock automatically)"
+					}
+				},
+				{
+					"name": "Create Purchase from Different Supplier",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"supplier_id\": 2,\n    \"purchase_date\": \"2025-06-28\",\n    \"items\": [\n        {\n            \"product_id\": 3,\n            \"quantity\": 25,\n            \"unit_price\": 120000\n        },\n        {\n            \"product_id\": 4,\n            \"quantity\": 20,\n            \"unit_price\": 180000\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/purchases",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"purchases"
+							]
+						},
+						"description": "Create purchase from PT Unilever (supplier_id: 2)"
+					}
+				},
+				{
+					"name": "Update Purchase",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"supplier_id\": 1,\n    \"purchase_date\": \"2025-06-29\",\n    \"items\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 80,\n            \"unit_price\": 85000\n        },\n        {\n            \"product_id\": 2,\n            \"quantity\": 40,\n            \"unit_price\": 45000\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/purchases/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"purchases",
+								"1"
+							]
+						},
+						"description": "Update purchase transaction (will restore old stock and add new stock)"
+					}
+				},
+				{
+					"name": "Delete Purchase",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/purchases/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"purchases",
+								"1"
+							]
+						},
+						"description": "Delete purchase transaction (will reduce stock automatically)"
+					}
+				}
+			],
+			"description": "Purchase transaction endpoints - automatically manages stock increase"
+		},
+		{
+			"name": "Validation Tests",
+			"item": [
+				{
+					"name": "Test - Insufficient Stock Sale",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_name\": \"Test Insufficient Stock\",\n    \"sale_date\": \"2025-06-28\",\n    \"items\": [\n        {\n            \"product_id\": 1,\n            \"quantity\": 99999,\n            \"unit_price\": 95000\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/sales",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"sales"
+							]
+						},
+						"description": "Test validation when trying to sell more than available stock"
+					}
+				},
+				{
+					"name": "Test - Wrong Supplier Product Purchase",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"supplier_id\": 1,\n    \"purchase_date\": \"2025-06-28\",\n    \"items\": [\n        {\n            \"product_id\": 3,\n            \"quantity\": 10,\n            \"unit_price\": 120000\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/purchases",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"purchases"
+							]
+						},
+						"description": "Test validation when trying to purchase product from wrong supplier (product_id 3 belongs to supplier 2, not 1)"
+					}
+				},
+				{
+					"name": "Test - Invalid Product Creation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama\": \"Invalid Product\",\n    \"stok\": 100,\n    \"satuan\": \"dus\",\n    \"supplier_id\": 1,\n    \"harga_beli\": 60000,\n    \"harga_jual\": 50000\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						},
+						"description": "Test validation when harga_jual <= harga_beli (should fail)"
+					}
+				}
+			],
+			"description": "Test cases for validation scenarios"
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		}
+	]
+} 
